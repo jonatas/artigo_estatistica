@@ -1,6 +1,7 @@
 %\documentclass[12pt]{article}
 \documentclass[espaco=simples,appendix=Name]{abnt}
 \usepackage{abntex}
+\usepackage{multirow} 
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf-8]{inputenc}
@@ -91,4 +92,149 @@ Seguindo a linha do código obtido anteriormente, em Ruby, é possível obter o 
 
 Neste caso, analisando o código acima descrito, têm-se uma váriavel \textbf{rol} recebendo o valor do método sort, que ordena os \textbf{dados\_brutos}.
 
+Inspecionando o resultado da variável \textbf{rol}, temos o seguinte vetor:
+
+
+\lstinputlisting[firstline=4, lastline=4,
+                 caption=Inspecionando a variável rol]{estatistica.rb} 
+
+Através do método \textbf{p} é possível imprimir em tela os valores de um objeto em Ruby. Este método tem o objetivo de ajudar o programador a entender como funciona o código e visualizar as propriedades de uma variável. No exemplo anterior, foi usado para visualizar se a ordem das idades que estão na variável \textbf{rol} está correta.
+
+\section { Criando a tabela de distribuição de frequência }
+
+Após o rol estar pronto, já é possível classificar os dados. Para criar esta classificação, usa-se uma tabela de distribuição de frequência. 
+
+Esta tabela é padronizada com cabeçalho contendo: O quê, quando e onde. A listagem possuí todas estas informações e pode ser usada como exemplo para a construção da tabela.
+
+\subsection { Frequência absoluta (fi) }
+
+Sabendo que o cabeçalho da tabela possuí esta descrição, é possível inserir os dados. A primeira informação a se extrair do \textbf{rol} é a \textbf{frequência absoluta}, também caracterizado pela sigla \textbf(fi). O \textbf{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
+
+Desta forma teríamos a seguinte classificação:
+
+20, 20
+
+21, 21, 21
+
+22, 22, 22, 22
+
+23
+
+24
+
+26
+
+31, 31, 31, 31, 31, 31
+
+
+Conforme os números acima, é possível imaginar que a frequência absoluta dos alunos com 20 anos de idade é 2, assim como, 21 é 3, 26 é 1 e existem 6 alunos com 31 anos.
+
+Entendendo que o objetivo deste cálculo é contar os dados com mesmo valor, já é possível avançar este passo na programação.
+
+\subsection { Programando a frequência absoluta (fi) }
+
+Sabendo que a variável \textbf{rol} possuí as idades ordenadas, existem várias formas de implementar a solução. A primeira forma, aborda a contagem de elementos de cada tipo, e o amarzenamento dele é feito através de um \textbf{Hash}. Este tipo de elemento, funciona como uma estrutura, que permite adicionar chaves com um determinado valor. Esta chave, pode ser um objeto de qualquer tipo, e também é possível recuperar ou estabelecer um valor para uma chave.
+
+O algorítmo que será criado, consiste em criar um \textbf{Hash} ou seja, uma variável que possua várias chaves e valores. E cada chave, será representada pela própria idade, e o valor, será a quantidade de vezes que aquela idade passou está presente no \textbf{rol}. 
+
+Se não existir um \textbf(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
+Caso contrário, se encontrar a idade, será adicionado mais 1 na frequência absoluta desta idade.
+
+\lstinputlisting[firstline=5, lastline=12, label=fi,
+                 caption=criando o fi]{estatistica.rb} 
+
+O código acima é iniciado pela declaração de uma nova variável, que se chama \textbf{fi} e sabe-se que é do tipo \textbf{Hash}, pois é inicializada com chaves(\textbf{\{\}}). 
+
+Logo na linha 2, é iniciado uma iteração(método \textbf{each}) com cada \textbf{idade} do \textbf{rol}. Esta variável (\textbf{idade}) é declarada após o método \textbf{each} e reconhecida pelo \textbf{bloco} delimitado por \textbf{do} e \textbf{end}(linhas 6 e 12). As variáveis de bloco, declaradas após \textbf{do}(linha 6) só funcionam dentro do bloco(\textbf{do..end}) e são interpoladas pelo caracter \textbf{|}.
+
+Para simplificar a explicação, é possível acompanhar na prática como este código funciona. A variável em foco neste momento, é \textbf{fi}, ou seja, o \textbf{Hash} de \textbf{idades} com suas respectivas \textbf{quantidades}.
+ Usando o método \textbf{p} na variável \textbf{fi}, é possível acompanhar passo a passo, as frequências absolutas sendo somadas.
+
+Uma simples inspeção pode ser adicionada, como neste fragmento de código:
+
+\begin{lstlisting}[caption=Inspecionando a soma dos elementos, emph=2]
+  p fi
+\end{lstlisting}
+
+Se o código acima for adicionado após a linha 6 da listagem do fi \ref{fi}, então irá imprimir as seguintes linhas:
+
+\begin{lstlisting}[caption=inspeção da variável \textbf{fi} ]
+{}
+{20=>1}
+{20=>2}
+{20=>2, 21=>1}
+{20=>2, 21=>2}
+{20=>2, 21=>3}
+{22=>1, 20=>2, 21=>3}
+{22=>2, 20=>2, 21=>3}
+{22=>3, 20=>2, 21=>3}
+{22=>4, 20=>2, 21=>3}
+{22=>4, 23=>1, 20=>2, 21=>3}
+{22=>4, 23=>1, 24=>1, 20=>2, 21=>3}
+{22=>4, 23=>1, 24=>1, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>1, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>2, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>3, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>4, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>5, 20=>2, 26=>1, 21=>3}
+{22=>4, 23=>1, 24=>1, 31=>6, 20=>2, 26=>1, 21=>3}
+\end{lstlisting}
+
+Observe como na primeira iteração o \textbf{fi} está vazio, e logo a idade \textbf{20} (linha 2) ganha a primeira quantidade \textbf{1}. Na segunda vez, o \textbf{fi} para idade 20 já existe, então acrescenta-se mais \textbf{1} ao \textbf{fi} desta \textbf{idade}(executa o código do \textbf{else}). Na próxima linha o ciclo se inicia novamente com a \textbf{idade 21}, fazendo com que a variável \textbf{fi} ganhe uma quantidade 1 para a idade 21.
+
+
+\subsection { Entendendo o funcionamento de um Hash }
+
+A classe \textbf{Hash} não possúi ordenação, por este motivo, a impressão dos elementos acima, não manteve a mesma sequência entre as idades e as quantidades respectivas, mas manteve consistência nos valores.
+
+Este tipo de objeto também pode ser declarado da seguinte forma:
+
+\begin{lstlisting}[caption=Sintaxe de declaração de um \textbf{Hash}]
+aluno = { 
+  :nome => "jonatas",
+  :idade => 23
+}
+\end{lstlisting}
+
+No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \textbf{Hash}, e é delimitada por abertura de chaves \textbf{\{} e fechamento de chaves \textbf{\}}. Os elementos internos como \textbf{:nome} e \textbf{:idade} são conhecidos como chaves, e \textbf{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
+
+
+\begin{lstlisting}[caption=Usufruindo dos métodos do \textbf{Hash}]
+puts aluno[:nome] 
+aluno[:idade] += 10
+\end{lstlisting}
+
+A primeira linha do código anterior imprime o nome do aluno(\textbf{jonatas}), enquanto a segunda, adiciona mais 10 anos a chave \textbf{:idade}. O mesmo exemplo da segunda linha poderia ser escrito da seguinte forma:
+
+\begin{lstlisting}[caption=Somando 10 anos a chave :idade]
+aluno[:idade] = aluno[:idade] + 10
+\end{lstlisting}
+
+Desta forma é possível deduzir que uma atribuição de uma nova chave em um \textbf{Hash}, é da mesma forma como a concatenação de um valor.
+
+\begin{lstlisting}[caption=Atribuindo o valor 23 para a chave :idade da variável aluno]
+aluno[:idade] = 23 
+\end{lstlisting}
+
+\section { Visualizando a tabela de frequências }
+
+\begin{table}
+\begin{tabular}{|l|c} 
+\hline 
+Idade & Frequência Absoluta (\textbf{fi}) \\ \hline 
+20 & 2 \\
+21 & 3 \\
+22 & 4 \\
+23 & 1 \\
+24 & 1 \\
+26 & 1 \\
+36 & 6 \\
+\hline 
+\end{tabular}
+\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\end{table}
+
+
 \end{document}
+
+
