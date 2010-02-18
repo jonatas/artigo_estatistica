@@ -46,6 +46,9 @@ Este estudo pretende abordar o conteúdo de forma suscinta, tornado a linguagem 
 
 A estatística descritiva, é a técnica usada para resumir, comparar, observar e descrever informações relevantes de um ou mais conjuntos de dados. Um conjunto de dados pode ser análisado básicamente em dois passos: organização e método.
 
+Segundo Jairo e Gilberto \cite{cursoEstatistica}, a estatística descritiva, como o próprio nome sugere, se constitui num conjunto de técnicas que objetivam descrever, analisar e interpretar os dados numéricos de uma população ou amostra.
+
+
 \section{ Distribuição de frequência } 
 
 \subsection { Na estatística }
@@ -100,15 +103,13 @@ Inspecionando o resultado da variável \textbf{rol}, temos o seguinte vetor:
 
 Através do método \textbf{p} é possível imprimir em tela os valores de um objeto em Ruby. Este método tem o objetivo de ajudar o programador a entender como funciona o código e visualizar as propriedades de uma variável. No exemplo anterior, foi usado para visualizar se a ordem das idades que estão na variável \textbf{rol} está correta.
 
-\section { Criando a tabela de distribuição de frequência }
-
-Após o rol estar pronto, já é possível classificar os dados. Para criar esta classificação, usa-se uma tabela de distribuição de frequência. 
-
-Esta tabela é padronizada com cabeçalho contendo: O quê, quando e onde. A listagem possuí todas estas informações e pode ser usada como exemplo para a construção da tabela.
 
 \subsection { Frequência absoluta (fi) }
 
-Sabendo que o cabeçalho da tabela possuí esta descrição, é possível inserir os dados. A primeira informação a se extrair do \textbf{rol} é a \textbf{frequência absoluta}, também caracterizado pela sigla \textbf(fi). O \textbf{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
+
+
+
+Sabendo que o rol já está organizado, é possível inserir  as frequências absolutas dos dados. A primeira informação a se extrair do \textbf{rol} é a \textbf{frequência absoluta}, também caracterizado pela sigla \textbf(fi). O \textbf{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
 
 Desta forma teríamos a seguinte classificação:
 
@@ -216,10 +217,25 @@ Desta forma é possível deduzir que uma atribuição de uma nova chave em um \t
 aluno[:idade] = 23 
 \end{lstlisting}
 
-\section { Visualizando a tabela de frequências }
+\section { Tabelas Estatísticas }
+
+Existem várias exigências para a criação de uma tabela estatística, e estas, se encaixam em uma estrutura de:
+
+
+
+\begin{itemize} 
+  \item{cabeçalho}
+  \item{corpo}
+  \item{rodapé}
+\end{itemize} 
+
+A tabela estatística, Com estes três elementos descritos de forma coerente, é possível ler os dados de uma tabela sem esforço. 
+
+O primeiro passo, é declarar o cabeçalho, que deve conter informações suficientes para responder \textbf{o quê}, \textbf{quando} e \textbf{onde}. Deve primeiramente descrever \textbf{o quê} está demonstrando, deve apresentar uma data ou ano explicando \textbf{quando} ocorreu a pesquisa ou fato. E por último, deve apresentar a fonte dos dados, de \textbf{onde} eles vieram.
 
 \begin{table}
-\begin{tabular}{|l|c} 
+\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\begin{tabular}{|l|c|} 
 \hline 
 Idade & Frequência Absoluta (\textbf{fi}) \\ \hline 
 20 & 2 \\
@@ -228,11 +244,20 @@ Idade & Frequência Absoluta (\textbf{fi}) \\ \hline
 23 & 1 \\
 24 & 1 \\
 26 & 1 \\
-36 & 6 \\
+36 & 6 \\ 
 \hline 
 \end{tabular}
-\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\small{Fonte: Unipar}
 \end{table}
+
+\bibliographystyle{plainat}
+\begin{thebibliography}{9}
+
+\bibitem{cursoEstatistica}
+Simon da Fonseca, Jairo; Martins, Gilberto de Andrade.
+Curso de Estatística.
+Sexta edição, São Paulo, SP. Editora ATLAS S.A., 1996.
+\end{thebibliography} 
 
 
 \end{document}
