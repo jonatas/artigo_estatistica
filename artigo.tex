@@ -1,6 +1,6 @@
 %\documentclass[12pt]{article}
 \documentclass[espaco=simples,appendix=Name]{abnt}
-\usepackage{abntex}
+%\usepackage{abntex}
 \usepackage{multirow} 
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
@@ -13,6 +13,7 @@
 \usepackage{tabela-simbolos}    % tabelas de simbolos do abntex
 \usepackage{dsfont}             % fonte
 \usepackage{fancyvrb}
+\newcommand{\code}[1] {\textbf{#1}}
 
 \citeoption{abnt-full-initials=yes}
 \lstset{language=Ruby,caption=Exemplo,label=Ruby, numbers=left, frame=single} 
@@ -60,7 +61,7 @@ A partir das idades (dados) coletados acima, serão analisados e classificados o
 
 
 
-Em Ruby, podemos representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \textbf{dados\_brutos}.
+Em Ruby, podemos representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \code{dados\_brutos}.
 
 
 \lstinputlisting[firstline=1,
@@ -68,7 +69,7 @@ Em Ruby, podemos representar os mesmos dados brutos através de um vetor de núm
                    caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
 
-No exemplo acima, dados\_brutos é o nome da variável que recebe o vetor de números. O operador \textbf{=}(igual) identifica que a variável dados\_brutos é igual ao vetor declarado posteriormente.
+No exemplo acima, dados\_brutos é o nome da variável que recebe o vetor de números. O operador \code{=}(igual) identifica que a variável dados\_brutos é igual ao vetor declarado posteriormente.
 
 Um vetor ou \textit{Array} é delimitado pelo compilador Ruby pelos caractéres de abertura de colchetes para iniciar os elementos, e fechamento de colchetes para declarar o fim dos elementos.
 
@@ -93,23 +94,21 @@ Seguindo a linha do código obtido anteriormente, em Ruby, é possível obter o 
 \lstinputlisting[firstline=3, lastline=3,
                  caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
-Neste caso, analisando o código acima descrito, têm-se uma váriavel \textbf{rol} recebendo o valor do método sort, que ordena os \textbf{dados\_brutos}.
+Neste caso, analisando o código acima descrito, têm-se uma váriavel \code{rol} recebendo o valor do método sort, que ordena os \code{dados\_brutos}.
 
-Inspecionando o resultado da variável \textbf{rol}, temos o seguinte vetor:
+Inspecionando o resultado da variável \code{rol}, temos o seguinte vetor:
 
 
 \lstinputlisting[firstline=4, lastline=4,
                  caption=Inspecionando a variável rol]{estatistica.rb} 
 
-Através do método \textbf{p} é possível imprimir em tela os valores de um objeto em Ruby. Este método tem o objetivo de ajudar o programador a entender como funciona o código e visualizar as propriedades de uma variável. No exemplo anterior, foi usado para visualizar se a ordem das idades que estão na variável \textbf{rol} está correta.
+Através do método \code{p} é possível imprimir em tela os valores de um objeto em Ruby. Este método tem o objetivo de ajudar o programador a entender como funciona o código e visualizar as propriedades de uma variável. No exemplo anterior, foi usado para visualizar se a ordem das idades que estão na variável \code{rol} está correta.
 
 
 \subsection { Frequência absoluta (fi) }
 
 
-
-
-Sabendo que o rol já está organizado, é possível inserir  as frequências absolutas dos dados. A primeira informação a se extrair do \textbf{rol} é a \textbf{frequência absoluta}, também caracterizado pela sigla \textbf(fi). O \textbf{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
+Sabendo que o rol já está organizado, é possível inserir  as frequências absolutas dos dados. A primeira informação a se extrair do \code{rol} é a \code{frequência absoluta}, também caracterizado pela sigla \code(fi). O \code{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
 
 Desta forma teríamos a seguinte classificação:
 
@@ -132,24 +131,24 @@ Conforme os números acima, é possível imaginar que a frequência absoluta dos
 
 Entendendo que o objetivo deste cálculo é contar os dados com mesmo valor, já é possível avançar este passo na programação.
 
-\subsection { Programando a frequência absoluta (fi) }
+\subsection { Implementando a frequência absoluta (fi) em Ruby }
 
-Sabendo que a variável \textbf{rol} possuí as idades ordenadas, existem várias formas de implementar a solução. A primeira forma, aborda a contagem de elementos de cada tipo, e o amarzenamento dele é feito através de um \textbf{Hash}. Este tipo de elemento, funciona como uma estrutura, que permite adicionar chaves com um determinado valor. Esta chave, pode ser um objeto de qualquer tipo, e também é possível recuperar ou estabelecer um valor para uma chave.
+Sabendo que a variável \code{rol} possuí as idades ordenadas, existem várias formas de implementar a solução. A primeira forma, aborda a contagem de elementos de cada tipo, e o amarzenamento dele é feito através de um \code{Hash}. Este tipo de elemento, funciona como uma estrutura, que permite adicionar chaves com um determinado valor. Esta chave, pode ser um objeto de qualquer tipo, e também é possível recuperar ou estabelecer um valor para uma chave.
 
-O algorítmo que será criado, consiste em criar um \textbf{Hash} ou seja, uma variável que possua várias chaves e valores. E cada chave, será representada pela própria idade, e o valor, será a quantidade de vezes que aquela idade passou está presente no \textbf{rol}. 
+O algorítmo que será criado, consiste em criar um \code{Hash} ou seja, uma variável que possua várias chaves e valores. E cada chave, será representada pela própria idade, e o valor, será a quantidade de vezes que aquela idade passou está presente no \code{rol}. 
 
-Se não existir um \textbf(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
+Se não existir um \code(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
 Caso contrário, se encontrar a idade, será adicionado mais 1 na frequência absoluta desta idade.
 
 \lstinputlisting[firstline=5, lastline=12, label=fi,
                  caption=criando o fi]{estatistica.rb} 
 
-O código acima é iniciado pela declaração de uma nova variável, que se chama \textbf{fi} e sabe-se que é do tipo \textbf{Hash}, pois é inicializada com chaves(\textbf{\{\}}). 
+O código acima é iniciado pela declaração de uma nova variável, que se chama \code{fi} e sabe-se que é do tipo \code{Hash}, pois é inicializada com chaves(\code{\{\}}). 
 
-Logo na linha 2, é iniciado uma iteração(método \textbf{each}) com cada \textbf{idade} do \textbf{rol}. Esta variável (\textbf{idade}) é declarada após o método \textbf{each} e reconhecida pelo \textbf{bloco} delimitado por \textbf{do} e \textbf{end}(linhas 6 e 12). As variáveis de bloco, declaradas após \textbf{do}(linha 6) só funcionam dentro do bloco(\textbf{do..end}) e são interpoladas pelo caracter \textbf{|}.
+Logo na linha 2, é iniciado uma iteração(método \code{each}) com cada \code{idade} do \code{rol}. Esta variável (\code{idade}) é declarada após o método \code{each} e reconhecida pelo \textbf{bloco} delimitado por \code{do} e \code{end}(linhas 6 e 12). As variáveis de bloco, declaradas após \code{do}(linha 6) só funcionam dentro do bloco(\code{do..end}) e são interpoladas pelo caracter \code{|}.
 
-Para simplificar a explicação, é possível acompanhar na prática como este código funciona. A variável em foco neste momento, é \textbf{fi}, ou seja, o \textbf{Hash} de \textbf{idades} com suas respectivas \textbf{quantidades}.
- Usando o método \textbf{p} na variável \textbf{fi}, é possível acompanhar passo a passo, as frequências absolutas sendo somadas.
+Para simplificar a explicação, é possível acompanhar na prática como este código funciona. A variável em foco neste momento, é \code{fi}, ou seja, o \code{Hash} de \code{idades} com suas respectivas \textbf{quantidades}.
+ Usando o método \code{p} na variável \code{fi}, é possível acompanhar passo a passo, as frequências absolutas sendo somadas.
 
 Uma simples inspeção pode ser adicionada, como neste fragmento de código:
 
@@ -159,7 +158,7 @@ Uma simples inspeção pode ser adicionada, como neste fragmento de código:
 
 Se o código acima for adicionado após a linha 6 da listagem do fi \ref{fi}, então irá imprimir as seguintes linhas:
 
-\begin{lstlisting}[caption=inspeção da variável \textbf{fi} ]
+\begin{lstlisting}[caption=inspeção da variável \code{fi} ]
 {}
 {20=>1}
 {20=>2}
@@ -181,37 +180,37 @@ Se o código acima for adicionado após a linha 6 da listagem do fi \ref{fi}, en
 {22=>4, 23=>1, 24=>1, 31=>6, 20=>2, 26=>1, 21=>3}
 \end{lstlisting}
 
-Observe como na primeira iteração o \textbf{fi} está vazio, e logo a idade \textbf{20} (linha 2) ganha a primeira quantidade \textbf{1}. Na segunda vez, o \textbf{fi} para idade 20 já existe, então acrescenta-se mais \textbf{1} ao \textbf{fi} desta \textbf{idade}(executa o código do \textbf{else}). Na próxima linha o ciclo se inicia novamente com a \textbf{idade 21}, fazendo com que a variável \textbf{fi} ganhe uma quantidade 1 para a idade 21.
+Observe como na primeira iteração o \code{fi} está vazio, e logo a idade \code{20} (linha 2) ganha a primeira quantidade \code{1}. Na segunda vez, o \code{fi} para idade 20 já existe, então acrescenta-se mais \code{1} ao \code{fi} desta \code{idade}(executa o código do \code{else}). Na próxima linha o ciclo se inicia novamente com a \textbf{idade 21}, fazendo com que a variável \code{fi} ganhe uma quantidade 1 para a idade 21.
 
 
 \subsection { Entendendo o funcionamento de um Hash }
 
-A classe \textbf{Hash} não possúi ordenação, por este motivo, a impressão dos elementos acima, não manteve a mesma sequência entre as idades e as quantidades respectivas, mas manteve consistência nos valores.
+A classe \code{Hash} não possúi ordenação, por este motivo, a impressão dos elementos acima, não manteve a mesma sequência entre as idades e as quantidades respectivas, mas manteve consistência nos valores.
 
 Este tipo de objeto também pode ser declarado da seguinte forma:
 
-\begin{lstlisting}[caption=Sintaxe de declaração de um \textbf{Hash}]
+\begin{lstlisting}[caption=Sintaxe de declaração de um \code{Hash}]
 aluno = { 
   :nome => "jonatas",
   :idade => 23
 }
 \end{lstlisting}
 
-No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \textbf{Hash}, e é delimitada por abertura de chaves \textbf{\{} e fechamento de chaves \textbf{\}}. Os elementos internos como \textbf{:nome} e \textbf{:idade} são conhecidos como chaves, e \textbf{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
+No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \code{Hash}, e é delimitada por abertura de chaves \code{\{} e fechamento de chaves \code{\}}. Os elementos internos como \code{:nome} e \code{:idade} são conhecidos como chaves, e \code{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
 
 
-\begin{lstlisting}[caption=Usufruindo dos métodos do \textbf{Hash}]
+\begin{lstlisting}[caption=Usufruindo dos métodos do \code{Hash}]
 puts aluno[:nome] 
 aluno[:idade] += 10
 \end{lstlisting}
 
-A primeira linha do código anterior imprime o nome do aluno(\textbf{jonatas}), enquanto a segunda, adiciona mais 10 anos a chave \textbf{:idade}. O mesmo exemplo da segunda linha poderia ser escrito da seguinte forma:
+A primeira linha do código anterior imprime o nome do aluno(\code{jonatas}), enquanto a segunda, adiciona mais 10 anos a chave \code{:idade}. O mesmo exemplo da segunda linha poderia ser escrito da seguinte forma:
 
 \begin{lstlisting}[caption=Somando 10 anos a chave :idade]
 aluno[:idade] = aluno[:idade] + 10
 \end{lstlisting}
 
-Desta forma é possível deduzir que uma atribuição de uma nova chave em um \textbf{Hash}, é da mesma forma como a concatenação de um valor.
+Desta forma é possível deduzir que uma atribuição de uma nova chave em um \code{Hash}, é da mesma forma como a concatenação de um valor.
 
 \begin{lstlisting}[caption=Atribuindo o valor 23 para a chave :idade da variável aluno]
 aluno[:idade] = 23 
@@ -222,7 +221,6 @@ aluno[:idade] = 23
 Existem várias exigências para a criação de uma tabela estatística, e estas, se encaixam em uma estrutura de:
 
 
-
 \begin{itemize} 
   \item{cabeçalho}
   \item{corpo}
@@ -231,24 +229,215 @@ Existem várias exigências para a criação de uma tabela estatística, e estas
 
 A tabela estatística, Com estes três elementos descritos de forma coerente, é possível ler os dados de uma tabela sem esforço. 
 
-O primeiro passo, é declarar o cabeçalho, que deve conter informações suficientes para responder \textbf{o quê}, \textbf{quando} e \textbf{onde}. Deve primeiramente descrever \textbf{o quê} está demonstrando, deve apresentar uma data ou ano explicando \textbf{quando} ocorreu a pesquisa ou fato. E por último, deve apresentar a fonte dos dados, de \textbf{onde} eles vieram.
+O primeiro passo, é declarar o cabeçalho, que deve conter informações suficientes para responder \code{o quê}, \textbf{quando} e \textbf{onde}. Deve primeiramente descrever \textbf{o quê} está demonstrando, deve apresentar uma data ou ano explicando \textbf{quando} ocorreu a pesquisa ou fato. E por último, deve apresentar a fonte dos dados, de \textbf{onde} eles vieram.
 
 \begin{table}
 \caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
 \begin{tabular}{|l|c|} 
 \hline 
-Idade & Frequência Absoluta (\textbf{fi}) \\ \hline 
+Idade & Frequência Absoluta (\code{fi}) \\ \hline 
 20 & 2 \\
 21 & 3 \\
 22 & 4 \\
 23 & 1 \\
 24 & 1 \\
 26 & 1 \\
-36 & 6 \\ 
+31 & 6 \\ 
 \hline 
 \end{tabular}
 \small{Fonte: Unipar}
 \end{table}
+
+\subsection { Frequência Relativa }
+
+
+Em uma pesquisa, têm-se o número de participantes, por exemplo, na tabela acima consta um total de 18 alunos com idades entre 20 e 31 anos. A frequência relativa é determinada pela razão entre a frequência absoluta (fi) e o número total de elementos (como o total de alunos), ou seja, a frequência relativa, é o percentual equivalente na amostra. \ref{tabela FR}
+
+A frequência relativa de um valor é dada por:
+
+\begin{equation}
+\label{fr}
+fr = \frac{Fi}{n} * 100
+\end{equation} 
+
+\begin{table}
+\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\label{tabela FR}
+\begin{tabular}{|l|c|c|} 
+\hline 
+Idade & Frequência Absoluta (\code{fi}) & Frequência Relativa (\code{fr}) \\ \hline 
+20    &               2                   &              2 / 18 \\ 
+21    &               3                   &              3 / 18 \\
+22    &               4                   &              4 / 18 \\
+23    &               1                   &              1 / 18 \\
+24    &               1                   &              1 / 18 \\
+26    &               1                   &              1 / 18 \\
+31    &               6                   &              6 / 18 \\ 
+\hline 
+\begin{math}
+\sum 
+\end{math} & 18 & 18 / 18 = 100\% \\
+\hline 
+\end{tabular}
+\small{Fonte: Unipar}
+\end{table}
+
+Sendo assim, é possível transformar os mesmos valores em percentuais, como o exemplo da tabela \ref{tabela FR percentual}.
+
+\begin{table}
+\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\label{tabela FR percentual}
+\begin{tabular}{|l|c|c|c|} 
+\hline 
+
+Idade &  \code{fi} & \code{fr}  & \code{fr\%} \\ \hline 
+20    &      2       &      2 / 18  &   11,11  \\ 
+21    &      3       &      3 / 18  &   16,66  \\
+22    &      4       &      4 / 18  &   22,22  \\
+23    &      1       &      1 / 18  &    5,55  \\
+24    &      1       &      1 / 18  &    5,55  \\
+26    &      1       &      1 / 18  &    5,55  \\
+31    &      6       &      6 / 18  &   16,66  \\ 
+\hline 
+\begin{math}
+\sum 
+\end{math} & 18      &     18 / 18  & 100,00 \% \\
+\hline 
+\end{tabular}
+\small{Fonte: Unipar}
+\end{table}
+
+% \small{
+%   Legenda:
+%   \code{fi}: Frequência absoluta
+%   \code{fr}: Frequência relativa
+%   \code{fr\%}: Frequência relativa percentual
+% }
+
+% frequencia relativa
+% fac 
+% fad
+% ponto medio
+% moda 
+% media aritmética
+% dispersão e medidas
+
+% interessante: distribuição normal
+
+\subsection { Implementando a frequência relativa (fr) em Ruby }
+
+Sabe-se que a construção da frequência absoulta (\code{fi}) através da codificação Ruby, está representado através da instância de uma variável chamada \code{fi} e é do tipo \code{Hash}. Para \textbf{cada dado da variável fi} existe uma frequência absoluta,  e através do método \code{each}, é possível iterar sobre cada dado e sua frequência absoluta:
+
+\lstinputlisting[firstline=15, lastline=15, caption=Iterando sobre cada dado e frequência absoluta.]{estatistica.rb} 
+
+A linha acima é a declaração de que \code{cada (each)} dado e frequência absoluta da variável fi, será utilizado nas próximas linhas através da variável \code{idade} que representa a própria idade usada na pesquisa, acompanhado da variável \code{frequencia\_absoulta}. Desta forma é possível realizar o cálculo da frequência relativa(fr) de cada frequência absoluta, usando o mesmo \ref{fr} cálculo antes representado, mas agora usando as variáveis disponíveis.
+
+\lstinputlisting[firstline=13, lastline=17, caption=Iterando sobre cada dado e frequência absoluta.]{estatistica.rb} 
+
+Como a frequência relativa também possuí um dado e valor, será usado o mesmo tipo de variável da frequência absoluta, por este motivo é inicializado da mesma forma(linha 13).
+
+A variável \code{n} recebe o tamanho da amostra. Como a variável \code{dados\_brutos} é do tipo \code{Array}, ou seja, é um vetor de elementos, ela possui uma propriedade chamada \code{size} que traduzindo do inglês para português significa \code{tamanho}. No caso desta pesquisa o total é \code{18}, ou seja, a quantidade de alunos pesquisados a respeito de suas idades.
+
+Da mesma forma como é iterado sobre o \code{rol} para encontrar o \code{fi}, a frequência relativa (\code{fr}) de cada \code{idade} é igual (\code{=}) a frequência absoluta(\code{frequencia\_absoluta}) dividído ( \code{/} ) pela quantidade de alunos da pesquisa (\code{n}) e multiplicado por 100 (\code{ * 100 }).
+
+\subsection{ Frequência absoluta acumulada} 
+
+Este dado é composto da soma das frequências absolutas dos valores inferiores ou iguais ao valor dado. \ref{tabela FAC percentual}
+
+\begin{table}
+\caption{Pesquisa da idade dos alunos do curso do quarto ano de Sistemas de Informação da Unipar de Francisco Beltrão, no ano de 2010.}
+\label{tabela FAC percentual}
+\begin{tabular}{|l|c|c|c|c|} 
+\hline 
+
+Idade &  \code{fi} & \code{fr}  & \code{fr\%} & \code{fac}\\ \hline 
+20    &      2       &      2 / 18  &   11,11  &      2 \\ 
+21    &      3       &      3 / 18  &   16,66  &      5 \\
+22    &      4       &      4 / 18  &   22,22  &      9 \\
+23    &      1       &      1 / 18  &    5,55  &     10 \\
+24    &      1       &      1 / 18  &    5,55  &     11 \\
+26    &      1       &      1 / 18  &    5,55  &     12 \\
+31    &      6       &      6 / 18  &   16,66  &      8 \\ 
+\hline 
+\begin{math}
+\sum 
+\end{math} & 18      &     18 / 18  & 100,00 \% & \\
+\hline 
+\end{tabular}
+\small{Fonte: Unipar}
+\end{table}
+
+
+\subsection{ Frequência absoluta acumulada} 
+
+Em Ruby, da mesma maneira como é criado a frequência relativa e absoluta, é necessário iterar sobre os elementos e contar as suas frequências absolutas. A diferença é que o valor agora deve ser acumulado, somando a frequência absoluta(\code{fi}) da \code{idade } à frequência absoluta acumulada até o item anterior. Quando iniciar, não existindo frequência acumulada anterior, o acumulado inicia com o valor da primeira frequência absoluta.
+
+Desta forma, a obtenção dos frequências absolutas acumuladas das idades é estruturada na seguinte regra:
+
+\begin{itemize}
+  \label{algoritmo fac}
+  \item{Buscar todas as idades únicas em ordem crescente}
+  \item{Iterar sobre cada uma, pegando sua frequência absoluta}
+  \item{\code{Se não} houver frequência \code{acumulada}}
+  \subitem{Então o valor \code{acumulado} é igual a frequência absoluta(\code{fi}) da \code{idade} }
+  \item{\code{Se não}}
+  \subitem{O valor acumulado é igual a soma dele mesmo(\code{acumulado}) \code{mais} a frequência absoluta da idade(\code{fi[idade]}.}
+\end{itemize} 
+
+Com base no algorítmo anterior é possível construir o programa em Ruby. 
+
+\lstinputlisting[firstline=20, lastline=20, caption=Buscar todas as idades únicas em ordem crescente]{estatistica.rb} 
+
+A variável \code{fi}, como já mencionado anteriormente, é do tipo \code{Hash}, que é uma variável que permite muitas chaves(\code{keys}) e valores(\code{values}). Nesta situação, as chaves (\code{keys}) são as próprias idades das frequências absolutas(\code{values}). Como é necessário iterar sobre cada idade de ascendente, para trabalhar com idades únicas é usado:
+
+\begin{lstlisting}[caption=Pegando apenas as idades das frequências absolutas]
+  p fi.keys
+\end{lstlisting}
+
+O comando acima imprime o conteúdo de uma variável do tipo \code{Array} semelhante a esta, que representa todas as idades de forma única e desorganizada:
+
+\begin{lstlisting}[caption=Idades das frequências absolutas podem ser usadas com o método de acesso]
+[22, 23, 24, 31, 20, 26, 21]
+\end{lstlisting}
+
+O próximo passo é organizar os elementos, como feito nos dados brutos para se transformar em rol. Apenas adicionando o método sort.
+
+\begin{lstlisting}[caption=Ordenando as idades das frequências absolutas com o método \code{sort}]
+  p fi.keys.sort
+\end{lstlisting}
+
+As idades quando ordenadas da forma acima são representadas:
+
+\begin{lstlisting}[caption=Idades das frequências absolutas ordenadas pelo método \code{sort}]
+[20, 21, 22, 23, 24, 26, 31]
+\end{lstlisting}
+
+Com as variáveis dispostas como no caso anterior, é possível iniciar a iteração sobre cada idade de forma ascendente. Para isso é usado o método \code{each}. Antes de iniciar o cálculo, é necessário inicializar a variável que irá acumular o valor.
+
+\lstinputlisting[firstline=19, lastline=19, caption=Inicializando a váriavel \code{acumulado}]{estatistica.rb} 
+
+Quando uma váriavel é inicializada com \code{nil}, é equivalente ao negação \code{false}, desta forma, é possível verificar \textbf{se não acumulado} ainda, da mesma maneira que o valor \code{false}.
+
+\lstinputlisting[firstline=21, lastline=21, caption=Verificação da existência de um valor acumulado]{estatistica.rb} 
+
+Seguindo a especificação do algorítmo anteriormente abordado \ref{algoritmo fac}, \code{Se não} houver frequência \code{acumulada}, Então o valor \code{acumulado} é igual a frequência absoluta(\code{fi}) da \code{idade} 
+
+\lstinputlisting[firstline=22, lastline=22, caption=Valor acumulado é inicializado com a frequência absoluta da idade inicial]{estatistica.rb} 
+
+Quando a variável acumulada receber o primeiro valor, então nas próximos idades, a frequência absoluta da idade será somada ao valor já existente.
+
+Usando a estrutura condicional \code{if}, é possível verificar uma condição lógica, a negação desta estrutura é utilizada através do comando \code{else}, que é permitido apenas dentro de uma declaração \code{if}. No código que compara a não existência do valor acumulado, a existência do mesmo é garantida no bloco \code{else}: linha 23.
+
+\lstinputlisting[firstline=21, lastline=25, caption=Buscar todas as idades únicas em ordem crescente]{estatistica.rb} 
+
+
+Dentro do bloco \code{else}, representado neste caso apenas pela linha 24, é atribuido o valor acumulado a soma dele mesmo com a frequência absoluta existente. O operador \code{+=} (lê-se "mais igual") é utilizado para fazer esta atribuição. A atribuição desta forma é correspondente à:
+
+\begin{lstlisting}[caption=Operador \code{+=} escrito de outra maneira ]
+  acumulado = acumulado + fi[idade]
+\end{lstlisting}
+
+\lstinputlisting[firstline=20, lastline=27, caption=Frequência absoluta crescente: \textbf{fac}]{estatistica.rb} 
 
 \bibliographystyle{plainat}
 \begin{thebibliography}{9}
