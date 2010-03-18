@@ -13,6 +13,7 @@
 \usepackage{tabela-simbolos}    % tabelas de simbolos do abntex
 \usepackage{dsfont}             % fonte
 \usepackage{fancyvrb}
+
 \newcommand{\code}[1] {\textbf{#1}}
 
 \citeoption{abnt-full-initials=yes}
@@ -64,9 +65,7 @@ A partir das idades (dados) coletados acima, serão analisados e classificados o
 Em Ruby, podemos representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \code{dados\_brutos}.
 
 
-\lstinputlisting[firstline=1,
-                  lastline=2,
-                   caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
+\lstinputlisting[linerange=1-2, caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
 
 No exemplo acima, dados\_brutos é o nome da variável que recebe o vetor de números. O operador \code{=}(igual) identifica que a variável dados\_brutos é igual ao vetor declarado posteriormente.
@@ -80,7 +79,6 @@ A quebra de linhas e espaços em branco não fazem diferença alguma para o comp
 
 Para entender e análisar os dados com mais facilidade, o primeiro passo é ordenar os elementos por ordem crescente ou decrescente. Neste caso, usaremos ordem crescente. 
 
-
 \subsection { Rol }
 
 Este método de organização está dos dados em ordem crescente é também conhecido como Rol. Organizando então o Rol dos dados obtidos na pesquisa acima tem-se:
@@ -91,7 +89,7 @@ Este método de organização está dos dados em ordem crescente é também conh
 
 Seguindo a linha do código obtido anteriormente, em Ruby, é possível obter o mesmo resultado fácilmente ordenando os valores do vetor. Nativamente, Ruby já tráz este método de ordenação e o nome dele é sort.
 
-\lstinputlisting[firstline=3, lastline=3,
+\lstinputlisting[linerange=3-3,
                  caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
 Neste caso, analisando o código acima descrito, têm-se uma váriavel \code{rol} recebendo o valor do método sort, que ordena os \code{dados\_brutos}.
@@ -99,14 +97,13 @@ Neste caso, analisando o código acima descrito, têm-se uma váriavel \code{rol
 Inspecionando o resultado da variável \code{rol}, temos o seguinte vetor:
 
 
-\lstinputlisting[firstline=4, lastline=4,
+\lstinputlisting[linerange=4-4,
                  caption=Inspecionando a variável rol]{estatistica.rb} 
 
 Através do método \code{p} é possível imprimir em tela os valores de um objeto em Ruby. Este método tem o objetivo de ajudar o programador a entender como funciona o código e visualizar as propriedades de uma variável. No exemplo anterior, foi usado para visualizar se a ordem das idades que estão na variável \code{rol} está correta.
 
 
 \subsection { Frequência absoluta (fi) }
-
 
 Sabendo que o rol já está organizado, é possível inserir  as frequências absolutas dos dados. A primeira informação a se extrair do \code{rol} é a \code{frequência absoluta}, também caracterizado pela sigla \code(fi). O \code{fi} é determinada pelo número de repetições de cada dado da consulta. Neste exemplo, é dada pela quantidade de alunos com a mesma idade.
 
@@ -140,7 +137,7 @@ O algorítmo que será criado, consiste em criar um \code{Hash} ou seja, uma var
 Se não existir um \code(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
 Caso contrário, se encontrar a idade, será adicionado mais 1 na frequência absoluta desta idade.
 
-\lstinputlisting[firstline=5, lastline=12, label=fi,
+\lstinputlisting[linerange=5-12, label=fi,
                  caption=criando o fi]{estatistica.rb} 
 
 O código acima é iniciado pela declaração de uma nova variável, que se chama \code{fi} e sabe-se que é do tipo \code{Hash}, pois é inicializada com chaves(\code{\{\}}). 
@@ -196,7 +193,7 @@ aluno = {
 }
 \end{lstlisting}
 
-No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \code{Hash}, e é delimitada por abertura de chaves \code{\{} e fechamento de chaves \code{\}}. Os elementos internos como \code{:nome} e \code{:idade} são conhecidos como chaves, e \code{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
+No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \code{Hash}, e é delimitada por abertura de chaves e fechamento de chaves. Os elementos internos como \code{:nome} e \code{:idade} são conhecidos como chaves, e \code{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
 
 
 \begin{lstlisting}[caption=Usufruindo dos métodos do \code{Hash}]
@@ -430,14 +427,63 @@ Usando a estrutura condicional \code{if}, é possível verificar uma condição 
 
 \lstinputlisting[firstline=21, lastline=25, caption=Buscar todas as idades únicas em ordem crescente]{estatistica.rb} 
 
-
 Dentro do bloco \code{else}, representado neste caso apenas pela linha 24, é atribuido o valor acumulado a soma dele mesmo com a frequência absoluta existente. O operador \code{+=} (lê-se "mais igual") é utilizado para fazer esta atribuição. A atribuição desta forma é correspondente à:
 
 \begin{lstlisting}[caption=Operador \code{+=} escrito de outra maneira ]
   acumulado = acumulado + fi[idade]
 \end{lstlisting}
 
-\lstinputlisting[firstline=20, lastline=27, caption=Frequência absoluta crescente: \textbf{fac}]{estatistica.rb} 
+Seguindo estes passos é possível atribuir o \code{fac} de cada idade com o valor acumulado:
+
+\lstinputlisting[firstline=26, lastline=26, caption=fac da idade recebe o valor acumulado]{estatistica.rb} 
+
+O cálculo do \code{fac} completo, trata-se então por percorrer todos as frequências acumuladas \code{fi}, acumulando o valor no novo \code{Hash} atribuído a variável \code{fac} o valor \code{acumulado} da frequência absoluta em ordem crescente.
+
+\lstinputlisting[firstline=18, lastline=27, caption=fac da idade recebe o valor acumulado]{estatistica.rb} 
+
+O uso da variável \code{acumulado} atribuído \code{nil} na linha 19, representa a verificação da inicialização da variável ainda não existente. O valor \code{nil} trata-se também como um valor \code{false} permitindo usar a sintaxe \code{if not acumulado}, que também poderia ser inicializado com 0 e comparado usando \code{if acumulado == 0}.
+
+\begin{lstlisting}[caption=Usando acumulado com valor inicial 0]
+fac = {}
+acumulado = 0 
+fi.keys.sort.each do |idade|
+  if acumulado == 0
+    acumulado = fi[idade]
+  else
+    acumulado += fi[idade]
+  end
+  fac[idade] = acumulado
+end
+\end{lstlisting}
+
+A abordagem atribuindo \code{nil} ao valor \code{acumulado}, torna-se interessante pela clareza de uma inicialização, e garantia a respeito de uma possível frequência acumulado igual à 0. Em outras palavras, se a frequência da primeira classe fosse 0, então o algorítmo iria falhar. Outra estratégia bastante abordada é o uso de um iterador numérico que permite saber qual é o indice do elemento, podendo assim, acumular a partir do primeiro item.
+
+Considerando que o iterador é inicializado com 0, então é possível comparar ao iterador e não usar a variável com o valor acumulado.
+
+
+\begin{lstlisting}[caption=Usando acumulado através do iterador \code{indice}, label=usa indice]
+fac = {}
+acumulado = nil
+fi.keys.sort.each_with_index do |idade, indice|
+  if indice == 0
+    acumulado = fi[idade]
+  else
+    acumulado += fi[idade]
+  end
+  fac[idade] = acumulado
+end
+\end{lstlisting}
+
+Usando o método \code{each\_with\_index} é possível resgatar o valor do iterador através da segunda variável do bloco: \code{indice}. A comparação acontece da mesma forma, e garante que apenas na primeira interação o valor acumulado será a frequência absoluta inicial.
+
+Uma observação importante, é que os blocos de código, \code{do..end} tratam-se de um sub-código, o qual mantém um escopo em suas variáveis. Por este motivo, é necessário que a variável \code{acumulado} exista antes deste bloco. 
+
+Quando a variável é inicializada dentro do bloco, ela perde a referência após o fim do bloco, e na iteração seguinte sobre os elementos, torna a não existir, perdendo o valor acumulado anteriormente. Desta forma, é extremamente necessário a declaração da variável \code{acumulado = nil} antes da iteração \code{each}.
+
+O escopo de variáveis em Ruby é claramente explicado no uso da variável indice no exemplo anterior\ref{usa indice} em que a variável indice, apenas está disponível enquanto iterando sobre os objetos, trazendo em seu valor, o indice da iteração, ou seja, qual é a vez que está iterando.
+
+Após a linha 10, a variável indice deixa de existir, pois saiu do seu escopo de uso. Com isso, sabe-se que quando é necessário utilizar depois de um bloco, a variável deve ser declarada antes, para não perder a referência após o bloco.
+
 
 \bibliographystyle{plainat}
 \begin{thebibliography}{9}
