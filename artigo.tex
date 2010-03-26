@@ -488,6 +488,108 @@ Os valores dos indices iniciam em zero e vão até o último elemento do vetor, 
 
 Após a linha 10, a variável indice deixa de existir, pois saiu do seu escopo de uso. Com isso, sabe-se que quando é necessário utilizar depois de um bloco, a variável deve ser declarada antes, para não perder a referência após o bloco.
 
+
+
+\subsection{Criação de métodos}
+
+Métodos são ações procedurais com algum objetivo específico. Em ruby, são representados por blocos de código definidos entre palavras \code{def} e \code{end}. Os métodos podem receber parâmetros e devolver algum resultado. Por exemplo, se quiser criar um método que faz uma soma, pode-se deduzir um nome para o método como \code{soma} e receber parâmetros neste método, ou seja, os valores que serão somados.
+
+\begin{lstlisting}[caption=implementando um método de soma]
+def soma numero, outro_numero
+  numero + outro_numero
+end
+\end{lstlisting}
+
+O exemplo anterior mostra a declaração de um método com o nome soma, que recebe dois parâmetros, número e outro número. A declaração de parenteses no nome do método é opcional, assim como no seu uso. 
+
+A maioria das linguagem de programação coloca parenteses na idêntificação de parâmetros, então pode ser escrito assim.
+
+\begin{lstlisting}[caption=implementando um método de soma usando parenteses alternativo]
+def soma(numero, outro_numero)
+  numero + outro_numero
+end
+\end{lstlisting}
+
+Após este código acima ser compilado, é possível executar ele, ou seja, usufruir do método que soma usando a seguinte sintaxe:
+
+\begin{lstlisting}[caption=usufruindo do método de soma]
+soma(1, 2)
+soma 3, 4
+end
+\end{lstlisting}
+
+As duas sintaxes acima podem ser executadas e o método responderá por 3 e 7 na mesma ordem.
+
+O método acima não está encapsulado em uma classe, então pode ser executado apartir do módulo Kernel. Mas também poderia ser declarado dentro de uma classe.
+
+\subsection{Criação de classes}
+
+Uma classe é um conjunto de comportamentos que é definido por algum tipo, divisão, qualidades, atributos etc. Essa definição, permite compartilhar comportamentos e definir estes atributos. Por exemplo:
+
+\begin{lstlisting}[caption=Criando uma classe, label=classePesquisa]
+class Pesquisa
+  attr_reader :rol, :fi
+  def initialize(dados_brutos)
+     @rol = dados_brutos.sort
+     @fi = {}
+     calcular_fi
+  end
+  def calcular_fi
+    @rol.each do |idade|
+      if not @fi[idade]
+        @fi[idade] = 1
+      else
+        @fi[idade] += 1
+      end
+    end
+    @fi
+  end
+end
+\end{lstlisting}
+
+O método \code{initialize} é o método que representa a instância de uma classe, e deve ser invocado através do método \code{new}. Este tipo de método também é conhecido como método construtor, por ser responsável por esta característica. Dentro deste método, uma variável de instância chamada \code{@rol} é definido recebendo os dados brutos como parâmetro e já colocando-os em ordem.
+
+Após esta chamada, o método \code{calcular\_fi} é chamado, e atribui todas as frequências absolutas neste momento. 
+
+Um método de instância só pode ser executado com a instância de um objeto da classe Pesquisa. Anteriormente, os dados brutos estavam sendo representados pela classe \code{Array}, agora, será parte de uma pesquisa e apenas será sua característica inicial no método construtor. Um objeto é representado por a instância de uma classe, e uma classe é a definição do comportamento deste objeto.
+
+Anteriormente, foi utilizado a classe Array, que tem um método \code{each} que permite iterar sobre \code{cada} elemento do Array. 
+
+Da mesma forma os métodos podem ser definidos e utilizados após a instância da classe. Para criar uma instância de uma nova classe, é necessário utilizar o método \code{new}, e neste caso recebe os dados brutos na inicialização da classe:
+
+\begin{lstlisting}[caption=Criando uma classe]
+objeto = Pesquisa.new([23, 31, 31, 21, 31, 26, 31, 22, 22, 
+                       24, 31, 21, 22, 20, 22, 31, 21, 20])
+objeto.rol
+objeto.fi
+\end{lstlisting}
+
+Na primeira linha, uma váriavel chamada \code{objeto} foi declarada, recebendo a nova instância da classe \code{Pesquisa}. Após, foi executado o método rol, que exibe o valor da variável \code{@rol}, que foi atribuído na inicialização da classe. O método \code{rol} e \code{fi} podem ser acessados pela declaração do método \code{attr\_reader}\ref{classePesquisa}. 
+
+\subsection{ Atributos da classe }
+
+Atributos da classe, são características que pertêncem aquela classe. Em ruby, é possível definir atributos através do método \code{attr\_accessor} e eles ser usados dentro dos métodos de instância.
+
+\begin{lstlisting}[caption=Criando uma classe com atributos]
+class Pessoa
+  attr_accessor :nome
+  def apresentar_se 
+    print "oi, eu sou " + @nome
+  end
+end
+\end{lstlisting}
+
+A classe acima declara um atributo de acesso chamado nome, com o uso deste método, é possível definir um nome para a instância da pessoa, usando o sinal de atribuição (=).
+
+\begin{lstlisting}[caption=Usando uma classe com métodos e atributos de acesso]
+estudante = Pessoa.new
+estudante.nome = "Jonatas Davi Paganini"
+estudande.apresentar_se
+\end{lstlisting}
+
+A segunda linha pode ser lida como: O \code{nome} do \code{estudante} é igual a "Jonatas Davi Paganini" ou \code{estudande.nome} é igual a "Jonatas Davi Paganini".
+
+
 \bibliographystyle{plainat}
 \begin{thebibliography}{9}
 
