@@ -476,14 +476,17 @@ end
 
 Usando o método \code{each\_with\_index} é possível resgatar o valor do iterador através da segunda variável do bloco: \code{indice}. A comparação acontece da mesma forma, e garante que apenas na primeira interação o valor acumulado será a frequência absoluta inicial.
 
+\subsection{Blocos e escopo de variáveis}
+
 Uma observação importante, é que os blocos de código, \code{do..end} tratam-se de um sub-código, o qual mantém um escopo em suas variáveis. Por este motivo, é necessário que a variável \code{acumulado} exista antes deste bloco. 
 
 Quando a variável é inicializada dentro do bloco, ela perde a referência após o fim do bloco, e na iteração seguinte sobre os elementos, torna a não existir, perdendo o valor acumulado anteriormente. Desta forma, é extremamente necessário a declaração da variável \code{acumulado = nil} antes da iteração \code{each}.
 
-O escopo de variáveis em Ruby é claramente explicado no uso da variável indice no exemplo anterior\ref{usa indice} em que a variável indice, apenas está disponível enquanto iterando sobre os objetos, trazendo em seu valor, o indice da iteração, ou seja, qual é a vez que está iterando.
+O escopo de variáveis em Ruby é claramente explicado no uso da variável indice no exemplo anterior\ref{usa indice} em que a variável indice, apenas está disponível enquanto iterando sobre os dados, trazendo em seu valor, o indice da iteração, ou seja, qual é a vez que está iterando.
+
+Os valores dos indices iniciam em zero e vão até o último elemento do vetor, sendo este o número de elementos do vetor subtraído de 1.
 
 Após a linha 10, a variável indice deixa de existir, pois saiu do seu escopo de uso. Com isso, sabe-se que quando é necessário utilizar depois de um bloco, a variável deve ser declarada antes, para não perder a referência após o bloco.
-
 
 \bibliographystyle{plainat}
 \begin{thebibliography}{9}
