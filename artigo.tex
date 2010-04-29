@@ -31,9 +31,6 @@
 
 \chapter{Introdução}
 
-A eminência da estatística, realmente comprova que ela está na moda. O profissional desta área têm conquistado um espaço cada vez maior. Através das fórmulas, é possível visualizar uma série de informações. Na prática é possível distribuir, classificar e sintetizar dados de diferentes formas e ângulos. Cada disposição dos dados pode revelar diversos tipos de informação, serve ao estatístico, analisar e encontrar os significados e respostas esperados.
-
-Um resultado estatístico é composto por uma série de cálculos e disposições que tornam possível chegar aquele resultado. Quando existe uma quantidade relevante de dados e passos, o trabalho do estatístico se torna mais árduo, se não tornar-se automatizado.
 
 Este trabalho é composto por duas raízes básicas de estudo: A estatística aplicada e programação básica na linguagem Ruby. O primeiro busca explicar as fórmulas e exibir os passos para chegar a um determinado resultado. A segunda tem como objetivo automatizar o processamento das fórmulas e passos realizados anteriormente.
 
@@ -54,6 +51,7 @@ Segundo Jairo e Gilberto \cite{cursoEstatistica}, a estatística descritiva, com
 \section{ Distribuição de frequência } 
 
 \subsection { Na estatística }
+
 Dado uma pesquisa realizada na turma do último ano de sistemas de informação, realizada no ano de 2010, buscando saber mais informações a respeito da faixa etária da turma, foram obtidas as seguintes idades:
 
 23, 31, 31, 21, 31, 26, 31, 22, 22, 24, 31, 21, 22, 20, 22, 31, 21, 20
@@ -81,21 +79,20 @@ Para entender e análisar os dados com mais facilidade, o primeiro passo é orde
 
 \subsection { Rol }
 
-Este método de organização está dos dados em ordem crescente é também conhecido como Rol. Organizando então o Rol dos dados obtidos na pesquisa acima tem-se:
+Este método de organização, consiste em ordenar os dados em ordem crescente ou decrescente. De forma que permita identificar e contar com facilidade os elementos de cada valor.
 
 20, 20, 21, 21, 21, 22, 22, 22, 22, 23, 24, 26, 31, 31, 31, 31, 31, 31
 
 \subsection { Implementando Rol em Ruby }
 
-Seguindo a linha do código obtido anteriormente, em Ruby, é possível obter o mesmo resultado fácilmente ordenando os valores do vetor. Nativamente, Ruby já tráz este método de ordenação e o nome dele é sort.
+A sequência dos números que foi obtida anteriormente, em Ruby, é possível obter o mesmo resultado ordenando os valores do vetor. Nativamente, Ruby já tráz este método de ordenação e o nome dele é sort.
 
 \lstinputlisting[linerange=3-3,
                  caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
-Neste caso, analisando o código acima descrito, têm-se uma váriavel \code{rol} recebendo o valor do método sort, que ordena os \code{dados\_brutos}.
+Neste caso, sabe-se que uma váriavel \code{rol} recebe o resultado do método de ordenação \code{sort} referente aos \code{dados\_brutos}.
 
 Inspecionando o resultado da variável \code{rol}, temos o seguinte vetor:
-
 
 \lstinputlisting[linerange=4-4,
                  caption=Inspecionando a variável rol]{estatistica.rb} 
@@ -124,7 +121,7 @@ Desta forma teríamos a seguinte classificação:
 31, 31, 31, 31, 31, 31
 
 
-Conforme os números acima, é possível imaginar que a frequência absoluta dos alunos com 20 anos de idade é 2, assim como, 21 é 3, 26 é 1 e existem 6 alunos com 31 anos.
+Conforme os números acima, é possível concluir que a frequência absoluta dos alunos com 20 anos de idade é 2, assim como, 21 é 3, 26 é 1 e existem 6 alunos com 31 anos.
 
 Entendendo que o objetivo deste cálculo é contar os dados com mesmo valor, já é possível avançar este passo na programação.
 
@@ -134,7 +131,7 @@ Sabendo que a variável \code{rol} possuí as idades ordenadas, existem várias 
 
 O algorítmo que será criado, consiste em criar um \code{Hash} ou seja, uma variável que possua várias chaves e valores. E cada chave, será representada pela própria idade, e o valor, será a quantidade de vezes que aquela idade passou está presente no \code{rol}. 
 
-Se não existir um \code(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
+Senão existir um \code(fi) para aquela idade, então será adicionado o valor 1 para aquela idade.
 Caso contrário, se encontrar a idade, será adicionado mais 1 na frequência absoluta desta idade.
 
 \lstinputlisting[linerange=5-12, label=fi,
@@ -354,7 +351,7 @@ Idade &  \code{fi} & \code{fr}  & \code{fr\%} & \code{fac}\\ \hline
 23    &      1       &      1 / 18  &    5,55  &     10 \\
 24    &      1       &      1 / 18  &    5,55  &     11 \\
 26    &      1       &      1 / 18  &    5,55  &     12 \\
-31    &      6       &      6 / 18  &   16,66  &      8 \\ 
+31    &      6       &      6 / 18  &   16,66  &     18 \\ 
 \hline 
 \begin{math}
 \sum 
@@ -365,7 +362,7 @@ Idade &  \code{fi} & \code{fr}  & \code{fr\%} & \code{fac}\\ \hline
 \end{table}
 
 
-\subsection{ Frequência absoluta acumulada} 
+\subsection{ Implementando a frequência absoluta acumulada (fac) em Ruby} 
 
 Em Ruby, da mesma maneira como é criado a frequência relativa e absoluta, é necessário iterar sobre os elementos e contar as suas frequências absolutas. A diferença é que o valor agora deve ser acumulado, somando a frequência absoluta(\code{fi}) da \code{idade } à frequência absoluta acumulada até o item anterior. Quando iniciar, não existindo frequência acumulada anterior, o acumulado inicia com o valor da primeira frequência absoluta.
 
@@ -375,9 +372,9 @@ Desta forma, a obtenção dos frequências absolutas acumuladas das idades é es
   \label{algoritmo fac}
   \item{Buscar todas as idades únicas em ordem crescente}
   \item{Iterar sobre cada uma, pegando sua frequência absoluta}
-  \item{\code{Se não} houver frequência \code{acumulada}}
+  \item{\code{Senão} houver frequência \code{acumulada}}
   \subitem{Então o valor \code{acumulado} é igual a frequência absoluta(\code{fi}) da \code{idade} }
-  \item{\code{Se não}}
+  \item{\code{Senão}}
   \subitem{O valor acumulado é igual a soma dele mesmo(\code{acumulado}) \code{mais} a frequência absoluta da idade(\code{fi[idade]}.}
 \end{itemize} 
 
@@ -387,7 +384,7 @@ Com base no algorítmo anterior é possível construir o programa em Ruby.
 
 A variável \code{fi}, como já mencionado anteriormente, é do tipo \code{Hash}, que é uma variável que permite muitas chaves(\code{keys}) e valores(\code{values}). Nesta situação, as chaves (\code{keys}) são as próprias idades das frequências absolutas(\code{values}). Como é necessário iterar sobre cada idade de ascendente, para trabalhar com idades únicas é usado:
 
-\begin{lstlisting}[caption=Pegando apenas as idades das frequências absolutas]
+\begin{lstlisting}[caption=Inspecionando apenas as idades das frequências absolutas]
   p fi.keys
 \end{lstlisting}
 
@@ -411,13 +408,12 @@ As idades quando ordenadas da forma acima são representadas:
 
 Com as variáveis dispostas como no caso anterior, é possível iniciar a iteração sobre cada idade de forma ascendente. Para isso é usado o método \code{each}. Antes de iniciar o cálculo, é necessário inicializar a variável que irá acumular o valor.
 
-\lstinputlisting[firstline=19, lastline=19, caption=Inicializando a váriavel \code{acumulado}]{estatistica.rb} 
 
-Quando uma váriavel é inicializada com \code{nil}, é equivalente ao negação \code{false}, desta forma, é possível verificar \textbf{se não acumulado} ainda, da mesma maneira que o valor \code{false}.
+Quando uma váriavel é inicializada com \code{nil}, é equivalente ao negação \code{false}, desta forma, é possível verificar \textbf{senão acumulado} ainda, da mesma maneira que o valor \code{false}.
 
 \lstinputlisting[firstline=21, lastline=21, caption=Verificação da existência de um valor acumulado]{estatistica.rb} 
 
-Seguindo a especificação do algorítmo anteriormente abordado \ref{algoritmo fac}, \code{Se não} houver frequência \code{acumulada}, Então o valor \code{acumulado} é igual a frequência absoluta(\code{fi}) da \code{idade} 
+Seguindo a especificação do algorítmo anteriormente abordado \ref{algoritmo fac}, \code{Senão} houver frequência \code{acumulada}, Então o valor \code{acumulado} é igual a frequência absoluta(\code{fi}) da \code{idade} 
 
 \lstinputlisting[firstline=22, lastline=22, caption=Valor acumulado é inicializado com a frequência absoluta da idade inicial]{estatistica.rb} 
 
