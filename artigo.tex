@@ -54,7 +54,7 @@
   passos realizados anteriormente.
 \end{resumo}
 
-\section{Introdução} \label{sec:firstpage}
+\chapter{Introdução}
 
 O estudo da estatística é simples e objetivo, cada dado é captado por uma pesquisa com algum objetivo, é executado em um determinado tempo e local. Em outras palavras, uma pesquisa deve ser composta pelos elementos básicos: O quê, quando e quem.
 
@@ -63,22 +63,24 @@ Através do estudo da estatística, exemplo de cálculos práticos, este artigo 
 Este estudo pretende abordar o conteúdo de forma suscinta, tornado a linguagem de programação apenas uma ferramenta simples para ajudar a automatizar o processo. Através deste, será possível experimentar diversas abordagens da linguagem de programação para resolução dos problemas. Neste artigo serão apresentados a resolução de problemas do tipo estatístico.
 
 
-\chapter{Estatística descritiva}
+\section {Estatística descritiva}
 
 A estatística descritiva, é a técnica usada para resumir, comparar, observar e descrever informações relevantes de um ou mais conjuntos de dados. Um conjunto de dados pode ser análisado básicamente em dois passos: organização e método.
 
 Segundo Jairo e Gilberto \cite{cursoEstatistica}, a estatística descritiva, como o próprio nome sugere, se constitui num conjunto de técnicas que objetivam descrever, analisar e interpretar os dados numéricos de uma população ou amostra.
 
 
-\section{ Distribuição de frequência } 
+\subsection{ Distribuição de frequência } 
 
-\subsection { Na estatística }
+\subsection { Exemplo clássico na estatística }
 
 Dado uma pesquisa realizada na turma do último ano de sistemas de informação, no ano de 2010, buscando saber mais informações a respeito da faixa etária da turma foram obtidas as seguintes idades:
 
 23, 31, 31, 21, 31, 26, 31, 22, 22, 24, 31, 21, 22, 20, 22, 31, 21, 20
 
 A partir das idades (dados) coletados acima serão analisados e classificados os dados. Os dados acima exibidos estão na forma bruta, ou seja, aleatória e desorganizada. 
+
+\subsection { Implementando Em Ruby }
 
 Codificando em Ruby é possível representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \code{dados\_brutos}.
 
@@ -91,7 +93,7 @@ Um vetor ou \textit{Array} é delimitado pelo compilador Ruby através dos carac
 A quebra de linhas e espaços em branco não fazem diferença alguma para o compilador, pois os dados acima estão dispostos em duas linhas para ficar mais legível para estudo.
 
 
-\section { Análise e classificação dos dados }
+\subsection { Análise e classificação dos dados }
 
 O primeiro passo para entender e análisar os dados com mais facilidade é ordenar os elementos por ordem crescente ou decrescente, neste caso será utilizado ordem crescente. 
 
@@ -228,7 +230,7 @@ Desta forma é possível deduzir que uma atribuição de uma nova chave em um \c
 aluno[:idade] = 23 
 \end{lstlisting}
 
-\section { Tabelas Estatísticas }
+\subsection { Tabelas Estatísticas }
 
 Existem várias exigências para a criação de uma tabela estatística, e estas, se encaixam em uma estrutura de:
 
@@ -379,7 +381,6 @@ Idade &  \code{fi} & \code{fr}  & \code{fr\%} & \code{fac}\\ \hline
 \small{Fonte: Unipar}
 \end{table}
 
-
 \subsection{ Implementando a frequência absoluta acumulada (fac) em Ruby} 
 
 Em Ruby, da mesma maneira como é criado a frequência relativa e absoluta, é necessário iterar sobre os elementos e contar as suas frequências absolutas. A diferença é que o valor agora deve ser acumulado, somando a frequência absoluta(\code{fi}) da \code{idade } à frequência absoluta acumulada até o item anterior. Quando iniciar, não existindo frequência acumulada anterior, o acumulado inicia com o valor da primeira frequência absoluta.
@@ -489,6 +490,10 @@ end
 \end{lstlisting}
 
 Usando o método \code{each\_with\_index} é possível resgatar o valor do iterador através da segunda variável do bloco: \code{indice}. A comparação acontece da mesma forma, e garante que apenas na primeira interação o valor acumulado será a frequência absoluta inicial.
+
+\section{Ruby Programming Language}
+
+Esta seção explica minuciosamente os algorítmos e fórmulas anteriores assim como reforça como utilizar e aplicar e estruturas básicas da programação Ruby
 
 \subsection{Blocos e escopo de variáveis}
 
