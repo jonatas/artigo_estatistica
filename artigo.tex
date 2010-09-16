@@ -36,9 +36,9 @@ Este trabalho é composto por duas raízes básicas de estudo: A estatística ap
 
 O estudo da estatística é simples e objetivo, cada dado é captado por uma pesquisa com algum objetivo, é executado em um determinado tempo e local. Em outras palavras, uma pesquisa deve ser composta pelos elementos básicos: O quê, quando e quem.
 
-Através do estudo da estatística, exemplo de cálculos práticos, este artigo procura abordar o uso da linguagem de programação Ruby como ferramenta para automatizar os cálculos estatísticos e codificação das fórmulas e decomposição do raciocíonio lógico. Através dos examplos práticos de codificação, cada assunto será codificado, e os novos elementos da linguagem de programação Ruby, serão explicados, após o seu uso, tornando o ensino da programação, uma formalidade do assunto precedido.
+Através do estudo da estatística, exemplo de cálculos práticos, este artigo procura abordar o uso da linguagem de programação Ruby como ferramenta para automatizar os cálculos estatísticos e codificação das fórmulas e decomposição do raciocíonio lógico. Através dos exemplos práticos de codificação, cada assunto será codificado, e os novos elementos da linguagem de programação Ruby, serão explicados, após o seu uso, tornando o ensino da programação, uma formalidade do assunto precedido.
 
-Este estudo pretende abordar o conteúdo de forma suscinta, tornado a linguagem de programação apenas uma ferramenta simples para ajudar a automatizar o processo. Desta maneira, é possível experimentar diversas abordagens da linguagem de programação para resolução dos problemas.  
+Este estudo pretende abordar o conteúdo de forma suscinta, tornado a linguagem de programação apenas uma ferramenta simples para ajudar a automatizar o processo. Através deste, será possível experimentar diversas abordagens da linguagem de programação para resolução dos problemas. Neste artigo serão apresentados a resolução de problemas do tipo estatístico.
 
 
 \chapter{Estatística descritiva}
@@ -52,40 +52,36 @@ Segundo Jairo e Gilberto \cite{cursoEstatistica}, a estatística descritiva, com
 
 \subsection { Na estatística }
 
-Dado uma pesquisa realizada na turma do último ano de sistemas de informação, realizada no ano de 2010, buscando saber mais informações a respeito da faixa etária da turma, foram obtidas as seguintes idades:
+Dado uma pesquisa realizada na turma do último ano de sistemas de informação, no ano de 2010, buscando saber mais informações a respeito da faixa etária da turma foram obtidas as seguintes idades:
 
 23, 31, 31, 21, 31, 26, 31, 22, 22, 24, 31, 21, 22, 20, 22, 31, 21, 20
 
-A partir das idades (dados) coletados acima, serão analisados e classificados os dados. Os dados acima exibidos, estão na forma bruta, ou seja, aleatória e desorganizada. 
+A partir das idades (dados) coletados acima serão analisados e classificados os dados. Os dados acima exibidos estão na forma bruta, ou seja, aleatória e desorganizada. 
 
-
-
-Em Ruby, podemos representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \code{dados\_brutos}.
-
+Codificando em Ruby é possível representar os mesmos dados brutos através de um vetor de números, e podem ser atribuídos a uma variável chamada \code{dados\_brutos}.
 
 \lstinputlisting[linerange=1-2, caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
 
-
 No exemplo acima, dados\_brutos é o nome da variável que recebe o vetor de números. O operador \code{=}(igual) identifica que a variável dados\_brutos é igual ao vetor declarado posteriormente.
 
-Um vetor ou \textit{Array} é delimitado pelo compilador Ruby pelos caractéres de abertura de colchetes para iniciar os elementos, e fechamento de colchetes para declarar o fim dos elementos.
+Um vetor ou \textit{Array} é delimitado pelo compilador Ruby através dos caractéres de abertura de colchetes para iniciar os elementos e fechamento de colchetes para declarar o fim dos elementos.
 
-A quebra de linhas e espaços em branco não fazem diferença alguma para o compilador, os dados acima estão dispostos em duas linhas para ficar mais legível para estudo.
+A quebra de linhas e espaços em branco não fazem diferença alguma para o compilador, pois os dados acima estão dispostos em duas linhas para ficar mais legível para estudo.
 
 
 \section { Análise e classificação dos dados }
 
-Para entender e análisar os dados com mais facilidade, o primeiro passo é ordenar os elementos por ordem crescente ou decrescente. Neste caso, usaremos ordem crescente. 
+O primeiro passo para entender e análisar os dados com mais facilidade é ordenar os elementos por ordem crescente ou decrescente, neste caso será utilizado ordem crescente. 
 
 \subsection { Rol }
 
-Este método de organização, consiste em ordenar os dados em ordem crescente ou decrescente. De forma que permita identificar e contar com facilidade os elementos de cada valor.
+Este método de organização consiste em ordenar os dados em ordem crescente ou decrescente, de forma que permita identificar e contar com facilidade os elementos de cada valor.
 
 20, 20, 21, 21, 21, 22, 22, 22, 22, 23, 24, 26, 31, 31, 31, 31, 31, 31
 
 \subsection { Implementando Rol em Ruby }
 
-A sequência dos números que foi obtida anteriormente, em Ruby, é possível obter o mesmo resultado ordenando os valores do vetor. Nativamente, Ruby já tráz este método de ordenação e o nome dele é sort.
+Observando a sequência dos números acima, é possível realizar o mesmo procedimento utilizando um método de ordenação dos valores no vetor. Este método é chamado de \code{sort} e nativamente ordena os elementos de um \textit{Array}.
 
 \lstinputlisting[linerange=3-3,
                  caption=Atribuindo dados brutos a uma variável]{estatistica.rb} 
