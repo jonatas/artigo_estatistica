@@ -1,6 +1,6 @@
-%\documentclass[12pt]{article}
-\documentclass[espaco=simples,appendix=Name]{abnt}
-%\usepackage{abntex}
+\documentclass[12pt]{article}
+%\documentclass[espaco=simples,appendix=Name]{abnt}
+\usepackage{sbc-template}
 \usepackage{multirow} 
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
@@ -21,18 +21,40 @@
 
 \title{Estatística aplicada à linguagem de programação Ruby}
 
-\author{Jônatas Davi Paganini}
+\author{Blind Review}
 
-\date{fevereiro de 2010}
+\address{Sistemas de Informação - Universidade Paranaense 
+  (UNIPAR)\\
+  Caixa Postal 99999 -- 85.601-000 --   Francisco Beltrão -- PR -- Brazil
+\nextinstitute
+  Departamento de Sistemas de Informação\\
+  Universidade Paranaense (UNIPAR) -- Cascavel, PR -- Brazil
+  \email{giito@unipar.br}
+}
 
 \begin{document}
 
 \maketitle
 
-\chapter{Introdução}
+\begin{abstract}
+  This meta-paper explain how to code and automate simple calculus. 
+  Through examples, it describes Statistical Formulas and Principles 
+  while understanding how to apply it using Ruby Programming Language.
+  Each step is composed like stairs: using two sides. Growing up on the
+  Descriptive Statistics and scripting it, exploring usefull resources
+  from Ruby. Twice sides approaches of the natural way to explain and 
+  deep into their own subject.
+\end{abstract}
+     
+\begin{resumo} 
+  Este trabalho é composto por duas raízes básicas de estudo: A estatística 
+  aplicada e programação básica na linguagem Ruby. O primeiro busca explicar
+   as fórmulas e exibir os passos para chegar a um determinado resultado. 
+  A segunda tem como objetivo automatizar o processamento das fórmulas e 
+  passos realizados anteriormente.
+\end{resumo}
 
-
-Este trabalho é composto por duas raízes básicas de estudo: A estatística aplicada e programação básica na linguagem Ruby. O primeiro busca explicar as fórmulas e exibir os passos para chegar a um determinado resultado. A segunda tem como objetivo automatizar o processamento das fórmulas e passos realizados anteriormente.
+\section{Introdução} \label{sec:firstpage}
 
 O estudo da estatística é simples e objetivo, cada dado é captado por uma pesquisa com algum objetivo, é executado em um determinado tempo e local. Em outras palavras, uma pesquisa deve ser composta pelos elementos básicos: O quê, quando e quem.
 
@@ -181,12 +203,12 @@ Este tipo de objeto também pode ser declarado da seguinte forma:
 
 \begin{lstlisting}[caption=Sintaxe de declaração de um \code{Hash}]
 aluno = { 
-  :nome => "jonatas",
+  :nome => "Fernando",
   :idade => 23
 }
 \end{lstlisting}
 
-No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \code{Hash}, e é delimitada por abertura de chaves e fechamento de chaves. Os elementos internos como \code{:nome} e \code{:idade} são conhecidos como chaves, e \code{"jonatas"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
+No código acima, uma variável chamada aluno foi declarada, esta variável é um tipo de \code{Hash}, e é delimitada por abertura de chaves e fechamento de chaves. Os elementos internos como \code{:nome} e \code{:idade} são conhecidos como chaves, e \code{"Fernando"} e 23 são seus respectivos valores. Desta forma é possível acessar os valores através das chaves, e as chaves devem ficar entre colchetes, conforme o exemplo abaixo. 
 
 
 \begin{lstlisting}[caption=Usufruindo dos métodos do \code{Hash}]
@@ -194,7 +216,7 @@ puts aluno[:nome]
 aluno[:idade] += 10
 \end{lstlisting}
 
-A primeira linha do código anterior imprime o nome do aluno(\code{jonatas}), enquanto a segunda, adiciona mais 10 anos a chave \code{:idade}. O mesmo exemplo da segunda linha poderia ser escrito da seguinte forma:
+A primeira linha do código anterior imprime o nome do aluno(\code{Fernando}), enquanto a segunda, adiciona mais 10 anos a chave \code{:idade}. O mesmo exemplo da segunda linha poderia ser escrito da seguinte forma:
 
 \begin{lstlisting}[caption=Somando 10 anos a chave :idade]
 aluno[:idade] = aluno[:idade] + 10
@@ -575,11 +597,11 @@ A classe acima declara um atributo de acesso chamado nome, com o uso deste méto
 
 \begin{lstlisting}[caption=Usando uma classe com métodos e atributos de acesso]
 estudante = Pessoa.new
-estudante.nome = "Jonatas Davi Paganini"
+estudante.nome = "Pedro Da Silva"
 estudande.apresentar_se
 \end{lstlisting}
 
-A segunda linha pode ser lida como: O \code{nome} do \code{estudante} é igual a "Jonatas Davi Paganini" ou \code{estudande.nome} é igual a "Jonatas Davi Paganini".
+A segunda linha pode ser lida como: O \code{nome} do \code{estudante} é igual a "Pedro Da Silva" ou \code{estudande.nome} é igual a "Pedro Da Silva".
 
 
 \bibliographystyle{plainat}
